@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Material Price Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Material Price Calculator</h2>
+
+  <label for="length">Enter Length (in inches):</label><br>
+  <input type="number" id="length" placeholder="e.g. 200"><br>
+
+  <button onclick="calculatePrice()">Calculate Price</button>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    function calculatePrice() {
+      const baseCost = 3024;
+      const costPerInch = 24.5;
+      const length = parseFloat(document.getElementById('length').value);
+
+      if (isNaN(length) || length < 0) {
+        document.getElementById('result').innerText = "Please enter a valid positive number.";
+        return;
+      }
+
+      const price = baseCost + (costPerInch * length);
+      document.getElementById('result').innerText = `Estimated Price: $${price.toFixed(2)}`;
+    }
+  </script>
+
+</body>
+</html>
